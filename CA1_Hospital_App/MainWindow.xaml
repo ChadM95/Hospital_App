@@ -7,6 +7,90 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="38*"/>
+            <ColumnDefinition Width="38*"/>
+            <ColumnDefinition Width="24*"/>
+        </Grid.ColumnDefinitions>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="16*"/>
+            <RowDefinition Height="44*"/>
+            <RowDefinition Height="40*"/>
+        </Grid.RowDefinitions>
+
+        <!--Column 1-->
+        <TextBlock Text="Ward List" FontSize="28" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+        <ListBox Grid.Row="1" Margin="10,10,10,10"/>
+
+        <Label Content="Add New Ward" HorizontalAlignment="Left" Margin="35,6,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Expander Grid.Row="2" Margin="10" IsExpanded="True">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="80*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!--Elements Inside Grid-->
+                <Label Content="Name" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Width="150" Height="20" Margin="5" HorizontalAlignment="Left"/>
+                <Label Grid.Row="1" Content="Capacity" VerticalAlignment="Center"/>
+                <Slider Grid.Row="1" Grid.Column="1" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
+                <Button Grid.Row="2" Grid.Column="2" Content="Add Ward" Width="80" Height="20" HorizontalAlignment="Left" Margin="20,0,0,0"/>
+
+            </Grid>
+        </Expander>
+
+        <!--Column 2-->
+        <TextBlock Text="Patients" Grid.Column="1" FontSize="28" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+        <ListBox Grid.Row="1" Grid.Column="1" Margin="10,10,10,10"/>
+
+        <Label Grid.Column="1" Grid.Row="2" Content="Add New Patient" HorizontalAlignment="Left" Margin="35,6,0,0" VerticalAlignment="Top"/>
+        <Expander Grid.Column="1" Grid.Row="2" Margin="10" IsExpanded="True">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="75*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <!--Elements Inside Grid-->
+                <Label Content="Name" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Width="150" Height="20" Margin="5" HorizontalAlignment="Left"/>
+                <Label Grid.Row="1" Content="DOB" VerticalAlignment="Center"/>
+                <DatePicker Grid.Row="1" Grid.Column="1" Width="150" Height="22" Margin="5,0,0,0" HorizontalAlignment="Left" />
+                <Label Grid.Row="2" Content="Blood Type" Width="100"/>
+
+                <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                    <RadioButton Margin="5,8,0,0"/>
+                    <Label Content="A"/>
+                    <RadioButton Margin="5,8,0,0"/>
+                    <Label Content="B"/>
+                    <RadioButton Margin="5,8,0,0"/>
+                    <Label Content="AB"/>
+                    <RadioButton Margin="5,8,0,0"/>
+                    <Label Content="O"/>
+                </StackPanel>
+
+                <Button Grid.Row="3" Grid.Column="1" Content="Add Patient" Width="100" Height="20" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+            </Grid>
+        </Expander>
+
+        <!--Column 3-->
+        <TextBlock Text="Details" Grid.Column="2" FontSize="28" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+        <StackPanel Grid.Row="2" Grid.Column="2" VerticalAlignment="Bottom">
+            <Button Content="Load" Width="60" Margin="10"/>
+            <Button Content="Save" Width="60" Margin="10,0,10,18"/>
+        </StackPanel>
     </Grid>
 </Window>
