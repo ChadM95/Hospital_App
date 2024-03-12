@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Security.Cryptography.Pkcs;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -11,14 +12,19 @@ using System.Windows.Shapes;
 
 namespace CA1_Hospital_App
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    public enum BloodType
+    {
+        A, B, AB, O
+    }
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();  
+
         }
+        
     }
+
 }
