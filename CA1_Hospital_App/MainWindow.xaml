@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CA1_Hospital_App"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="38*"/>
@@ -21,7 +22,7 @@
 
         <!--Column 1-->
         <TextBlock Text="Ward List" FontSize="28" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10"/>
-        <ListBox Grid.Row="1" Margin="10,10,10,10"/>
+        <ListBox x:Name="lbxWards" Grid.Row="1" Margin="10,10,10,10"/>
 
         <Label Content="Add New Ward" HorizontalAlignment="Left" Margin="35,6,0,0" Grid.Row="2" VerticalAlignment="Top"/>
         <Expander Grid.Row="2" Margin="10" IsExpanded="True">
@@ -48,7 +49,7 @@
 
         <!--Column 2-->
         <TextBlock Text="Patients" Grid.Column="1" FontSize="28" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10"/>
-        <ListBox Grid.Row="1" Grid.Column="1" Margin="10,10,10,10"/>
+        <ListBox x:Name="lbxPatients" Grid.Row="1" Grid.Column="1" Margin="10,10,10,10"/>
 
         <Label Grid.Column="1" Grid.Row="2" Content="Add New Patient" HorizontalAlignment="Left" Margin="35,6,0,0" VerticalAlignment="Top"/>
         <Expander Grid.Column="1" Grid.Row="2" Margin="10" IsExpanded="True">

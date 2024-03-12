@@ -26,6 +26,12 @@ namespace CA1_Hospital_App
             BloodType = bloodType;
         }
 
+        //methods
+        public override string ToString()
+        {
+            return $"{Name} ()";
+        }
+
     }
    
 }

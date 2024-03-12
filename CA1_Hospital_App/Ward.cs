@@ -28,5 +28,10 @@ namespace CA1_Hospital_App
             Capacity = capacity;
         }
 
+        //methods
+        public override string ToString()
+        {
+            return $"{Name}     Limit: {Capacity}";
+        }
     }
 }
