@@ -24,16 +24,16 @@ namespace CA1_Hospital_App
         public ObservableCollection<Ward> wards = new ObservableCollection<Ward>();
         public MainWindow()
         {
-            InitializeComponent();  
+            InitializeComponent();
 
         }
 
         //window loaded event - populates program with sample ward and patient objects
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //create new wards
+            //create sample wards
             Ward w1 = new Ward("The Bee Gees Ward", 3);
-            Ward w2 = new Ward("The Simpsons Ward",5);
+            Ward w2 = new Ward("The Simpsons Ward", 5);
 
             //add to wards collection
             wards.Add(w1);
@@ -43,18 +43,16 @@ namespace CA1_Hospital_App
             lbxWards.ItemsSource = wards;
 
             //create patients for ward 1
-            Patient p1 = new Patient("Barry",new DateTime(1946,9,1),BloodType.A);
-            Patient p2 = new Patient("Robin",new DateTime(1949,12,22),BloodType.O);
-            Patient p3 = new Patient("Maurice",new DateTime(1949,12,22),BloodType.AB);
-            
+            Patient p1 = new Patient("Barry", new DateTime(1946, 9, 1), BloodType.A);
+            Patient p2 = new Patient("Robin", new DateTime(1949, 12, 22), BloodType.O);
+            Patient p3 = new Patient("Maurice", new DateTime(1949, 12, 22), BloodType.AB);
+
             //create patients for ward 2
-            Patient p4 = new Patient("Homer", new DateTime(1982,1,1), BloodType.AB);
-            Patient p5 = new Patient("Marge", new DateTime(1984,2,2), BloodType.O);
-            Patient p6 = new Patient("Bart", new DateTime(2014,3,3), BloodType.A);
-            Patient p7 = new Patient("Lisa", new DateTime(2016,4,4), BloodType.B);
-            Patient p8 = new Patient("Maggie", new DateTime(2023,5,5), BloodType.AB);
-
-
+            Patient p4 = new Patient("Homer", new DateTime(1982, 1, 1), BloodType.AB);
+            Patient p5 = new Patient("Marge", new DateTime(1984, 2, 2), BloodType.O);
+            Patient p6 = new Patient("Bart", new DateTime(2014, 3, 3), BloodType.A);
+            Patient p7 = new Patient("Lisa", new DateTime(2016, 4, 4), BloodType.B);
+            Patient p8 = new Patient("Maggie", new DateTime(2023, 5, 5), BloodType.AB);
 
             //Add patients to ward 1
             w1.patients.Add(p1);
@@ -73,11 +71,44 @@ namespace CA1_Hospital_App
         private void lbxWards_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lbxWards.SelectedItem is Ward SelectedWard)
-            { 
+            {
                 lbxPatients.ItemsSource = SelectedWard.patients;
             }
 
         }
-    }
 
+        //update patient details display
+        private void lbxPatients_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var SelectedPatient = lbxPatients.SelectedItem as Patient;
+
+            if (SelectedPatient != null)
+            {
+                //display patient name
+                tblkName.Text = SelectedPatient.Name;
+
+                //display patient blood type image
+                switch (SelectedPatient.BloodType)
+                {
+                    case BloodType.A:
+                        bloodImg.Source = new BitmapImage(new Uri("/CA1_Hospital_App;component/Images/a.png", UriKind.Relative));
+                        break;
+
+                    case BloodType.B:
+                        bloodImg.Source = new BitmapImage(new Uri("/CA1_Hospital_App;component/Images/b.png", UriKind.Relative));
+                        break;
+
+                    case BloodType.AB:
+                        bloodImg.Source = new BitmapImage(new Uri("/CA1_Hospital_App;component/Images/ab.png", UriKind.Relative));
+                        break;
+
+                    case BloodType.O:
+                        bloodImg.Source = new BitmapImage(new Uri("/CA1_Hospital_App;component/Images/o.png", UriKind.Relative));
+                        break;
+
+                }
+
+            }
+        }
+    }
 }

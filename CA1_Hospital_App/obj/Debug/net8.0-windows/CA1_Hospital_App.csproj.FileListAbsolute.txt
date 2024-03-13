@@ -19,3 +19,8 @@ C:\Users\auser\Documents\Chad\Hospital_App\Hospital_App\CA1_Hospital_App\obj\Deb
 C:\Users\auser\Documents\Chad\Hospital_App\Hospital_App\CA1_Hospital_App\obj\Debug\net8.0-windows\CA1_Hospital_App.pdb
 C:\Users\auser\Documents\Chad\Hospital_App\Hospital_App\CA1_Hospital_App\obj\Debug\net8.0-windows\CA1_Hospital_App.genruntimeconfig.cache
 C:\Users\auser\Documents\Chad\Hospital_App\Hospital_App\CA1_Hospital_App\obj\Debug\net8.0-windows\ref\CA1_Hospital_App.dll
+C:\Users\auser\Documents\Chad\Hospital_App\Hospital_App\CA1_Hospital_App\bin\Debug\net8.0-windows\Images\ab.png
+C:\Users\auser\Documents\Chad\Hospital_App\Hospital_App\CA1_Hospital_App\bin\Debug\net8.0-windows\Images\b.png
+C:\Users\auser\Documents\Chad\Hospital_App\Hospital_App\CA1_Hospital_App\bin\Debug\net8.0-windows\Images\o.png
+C:\Users\auser\Documents\Chad\Hospital_App\Hospital_App\CA1_Hospital_App\obj\Debug\net8.0-windows\CA1_Hospital_App_Content.g.cs
+C:\Users\auser\Documents\Chad\Hospital_App\Hospital_App\CA1_Hospital_App\bin\Debug\net8.0-windows\Images\a.png
