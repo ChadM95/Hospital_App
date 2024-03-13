@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,7 +30,15 @@ namespace CA1_Hospital_App
         //methods
         public override string ToString()
         {
-            return $"{Name} ({DateTime.Now - DOB}) Blood Type: {BloodType}";
+            return $"{Name} ({GetAge()}) Blood Type: {BloodType}";
+        }
+
+        public int GetAge()
+        {
+            int age;
+            DateTime today = DateTime.Today;
+            age = today.Year - this.DOB.Year;
+            return age;
         }
 
     }
