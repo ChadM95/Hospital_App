@@ -29,7 +29,7 @@ namespace CA1_Hospital_App
         //methods
         public override string ToString()
         {
-            return $"{Name} ()";
+            return $"{Name} ({DateTime.Now - DOB}) Blood Type: {BloodType}";
         }
 
     }

@@ -22,7 +22,7 @@
 
         <!--Column 1-->
         <TextBlock Text="Ward List" FontSize="28" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10"/>
-        <ListBox x:Name="lbxWards" Grid.Row="1" Margin="10,10,10,10"/>
+        <ListBox x:Name="lbxWards" SelectionChanged="lbxWards_SelectionChanged" Grid.Row="1" Margin="10,10,10,10"/>
 
         <Label Content="Add New Ward" HorizontalAlignment="Left" Margin="35,6,0,0" Grid.Row="2" VerticalAlignment="Top"/>
         <Expander Grid.Row="2" Margin="10" IsExpanded="True">

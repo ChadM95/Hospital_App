@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 
 namespace CA1_Hospital_App
 {
+    //Create Blood Type Enum 
     public enum BloodType
     {
         A, B, AB, O
@@ -48,10 +49,17 @@ namespace CA1_Hospital_App
             w1.patients.Add(p1);
             w1.patients.Add(p2);
             w1.patients.Add(p3);
+            
+        }
 
-            //update listboxes
-            if (lbxWards.SelectedItem != null)
-                lbxPatients.ItemsSource = ((Ward)lbxWards.SelectedItem).patients;
+        //update listboxes upon selection
+        private void lbxWards_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lbxWards.SelectedItem is Ward SelectedWard)
+            { 
+                lbxPatients.ItemsSource = SelectedWard.patients;
+            }
+
         }
     }
 

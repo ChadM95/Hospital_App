@@ -26,6 +26,7 @@ namespace CA1_Hospital_App
         {
             Name = name;
             Capacity = capacity;
+            patients = new ObservableCollection<Patient>();
         }
 
         //methods
