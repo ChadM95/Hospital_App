@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:CA1_Hospital_App"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -21,7 +22,7 @@
         </Grid.RowDefinitions>
 
         <!--Column 1-->
-        <TextBlock Text="Ward List" FontSize="28" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+        <TextBlock x:Name="tblkWardHeader" FontSize="28" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10"/>
         <ListBox x:Name="lbxWards" SelectionChanged="lbxWards_SelectionChanged" Grid.Row="1" Margin="10,10,10,10"/>
 
         <Label Content="Add New Ward" HorizontalAlignment="Left" Margin="35,6,0,0" Grid.Row="2" VerticalAlignment="Top"/>
@@ -39,10 +40,11 @@
                 </Grid.RowDefinitions>
                 <!--Elements Inside Grid-->
                 <Label Content="Name" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" Width="150" Height="20" Margin="5" HorizontalAlignment="Left"/>
+                <TextBox x:Name="tbWardName" Grid.Column="1" Width="150" Height="20" Margin="5" HorizontalAlignment="Left"/>
                 <Label Grid.Row="1" Content="Capacity" VerticalAlignment="Center"/>
-                <Slider Grid.Row="1" Grid.Column="1" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
-                <Button Grid.Row="2" Grid.Column="2" Content="Add Ward" Width="80" Height="20" HorizontalAlignment="Left" Margin="20,0,0,0"/>
+                <Slider x:Name="sliderCapacity" Grid.Row="1" Grid.Column="1" ValueChanged="Slider_ValueChanged" TickPlacement="TopLeft" SmallChange="1" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,10,5"/>
+                <TextBlock x:Name="tblkCapacity" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,10,50,5" />
+                <Button x:Name="btnAddWard" Grid.Row="2" Grid.Column="2" Click="btnAddWard_Click" Content="Add Ward" Width="80" Height="20" HorizontalAlignment="Left" Margin="20,0,0,0"/>
 
             </Grid>
         </Expander>
@@ -67,30 +69,30 @@
                 </Grid.RowDefinitions>
                 <!--Elements Inside Grid-->
                 <Label Content="Name" Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <TextBox Grid.Column="1" Width="150" Height="20" Margin="5" HorizontalAlignment="Left"/>
+                <TextBox x:Name="tbPatientName" Grid.Column="1" Width="150" Height="20" Margin="5" HorizontalAlignment="Left"/>
                 <Label Grid.Row="1" Content="DOB" VerticalAlignment="Center"/>
-                <DatePicker Grid.Row="1" Grid.Column="1" Width="150" Height="22" Margin="5,0,0,0" HorizontalAlignment="Left" />
+                <DatePicker x:Name="datePickerDOB" Grid.Row="1" Grid.Column="1" Width="150" Height="22" Margin="5,0,0,0" HorizontalAlignment="Left" />
                 <Label Grid.Row="2" Content="Blood Type" Width="100"/>
 
                 <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-                    <RadioButton Margin="5,8,0,0"/>
+                    <RadioButton x:Name="rdBtnA" Margin="5,8,0,0"/>
                     <Label Content="A"/>
-                    <RadioButton Margin="5,8,0,0"/>
+                    <RadioButton x:Name="rdBtnB" Margin="5,8,0,0"/>
                     <Label Content="B"/>
-                    <RadioButton Margin="5,8,0,0"/>
+                    <RadioButton x:Name="rdBtnAB" Margin="5,8,0,0"/>
                     <Label Content="AB"/>
-                    <RadioButton Margin="5,8,0,0"/>
+                    <RadioButton x:Name="rdBtnO" Margin="5,8,0,0"/>
                     <Label Content="O"/>
                 </StackPanel>
 
-                <Button Grid.Row="3" Grid.Column="1" Content="Add Patient" Width="100" Height="20" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                <Button x:Name="btnAddPatient" Click="btnAddPatient_Click" Grid.Row="3" Grid.Column="1" Content="Add Patient" Width="100" Height="20" HorizontalAlignment="Left" Margin="10,0,0,0"/>
             </Grid>
         </Expander>
 
         <!--Column 3-->
         <TextBlock Text="Details" Grid.Column="2" FontSize="28" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10"/>
         <TextBlock x:Name="tblkName" Grid.Column="2" Grid.Row="1" Height="20" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="5" FontSize="15" />
-        <Image x:Name="bloodImg" Grid.Column="2" Grid.Row="1" Margin="0,30,0,0"/>
+        <Image x:Name="bloodImg" Grid.Column="2" Grid.Row="1" Margin="40"/>
 
         <StackPanel Grid.Row="2" Grid.Column="2" VerticalAlignment="Bottom">
             <Button Content="Load" Width="60" Margin="10"/>

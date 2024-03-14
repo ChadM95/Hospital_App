@@ -65,6 +65,9 @@ namespace CA1_Hospital_App
             w2.patients.Add(p6);
             w2.patients.Add(p7);
             w2.patients.Add(p8);
+
+            //update ward header
+            tblkWardHeader.Text = $"Ward List ({Ward.NumberOfWards})";
         }
 
         //update listboxes when ward is selected
@@ -108,6 +111,56 @@ namespace CA1_Hospital_App
 
                 }
 
+            }
+        }
+
+        //display slider number in textblock
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            tblkCapacity.Text = String.Format("{0:F0}", sliderCapacity.Value);
+        }
+
+        //add new ward
+        private void btnAddWard_Click(object sender, RoutedEventArgs e)
+        {
+            if (tbWardName.Text != null && sliderCapacity.Value > 0)
+            {
+                //read in name and capacity
+                string name = tbWardName.Text;
+                double capacity = sliderCapacity.Value;
+                
+                //create new ward object
+                Ward w1 = new Ward(name,capacity);
+                
+                //add to ward collection
+                wards.Add(w1);
+
+                //update ward header
+                tblkWardHeader.Text = $"Ward List ({Ward.NumberOfWards})";
+            }
+        }
+
+        //add new patient
+        private void btnAddPatient_Click(object sender, RoutedEventArgs e)
+        {
+            //create selected ward object reference
+            var SelectedWard = lbxWards.SelectedItem as Ward;
+
+            //check ward capacity first
+            if (SelectedWard.patients.Count == SelectedWard.Capacity)
+                MessageBox.Show($"Ward capacity {SelectedWard.Capacity:F0} reached.Cannot add any more wards");
+
+            else if (tbPatientName.Text != null && )
+            {
+                //read in data
+                string name = tbPatientName.Text;
+                DateTime dob = datePickerDOB.SelectedDate;
+
+                //create new object
+                Patient p1 = new Patient();
+
+                //add patient to selected ward
+                SelectedWard.patients.Add(p1);
             }
         }
     }
