@@ -10,6 +10,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using Newtonsoft.Json;
+using System.Collections;
 
 namespace CA1_Hospital_App
 {
@@ -146,8 +149,15 @@ namespace CA1_Hospital_App
             //create object reference for selected ward 
             var SelectedWard = lbxWards.SelectedItem as Ward;
 
-            //check ward capacity first
-            if (SelectedWard.patients.Count == SelectedWard.Capacity)
+            //check if a ward is selected
+            if (SelectedWard == null)
+            {
+                MessageBox.Show("No Ward Selected");
+                return;
+            }
+
+            //check ward capacity
+            if (SelectedWard.patients.Count >= SelectedWard.Capacity)
                 MessageBox.Show($"Ward capacity ({SelectedWard.Capacity:F0}) reached. Cannot add any more wards");
 
             else if (tbPatientName.Text != null && datePickerDOB.SelectedDate != null )
@@ -190,6 +200,42 @@ namespace CA1_Hospital_App
                 //add patient to selected ward
                 SelectedWard.patients.Add(p1);
             }
+        }
+
+        //save objects to json
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            ;
+            //get Json formatted objects
+            string Json = JsonConvert.SerializeObject(wards, Formatting.Indented);
+
+            //write to file
+            using (StreamWriter sw = new StreamWriter(@"c:\temp\Hospital_App.json"))
+            {
+                sw.Write(Json);
+            }
+
+            //display message
+            MessageBox.Show("Saved!");
+        }
+
+        //load Json file
+        private void btnLoad_Click(object sender, RoutedEventArgs e)
+        {
+            using (StreamReader sr = new StreamReader(@"c:\temp\Hospital_App.json"))
+
+            {
+                //read text
+                string json = sr.ReadToEnd();
+
+                //convert from json to objects
+                wards = JsonConvert.DeserializeObject<ObservableCollection<Ward>>(json);
+
+                //update listbox displays
+                lbxWards.ItemsSource = wards;
+
+            }
+
         }
     }
 }
