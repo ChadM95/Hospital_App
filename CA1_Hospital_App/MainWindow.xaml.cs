@@ -130,10 +130,10 @@ namespace CA1_Hospital_App
                 double capacity = sliderCapacity.Value;
                 
                 //create new ward object
-                Ward w1 = new Ward(name,capacity);
+                Ward newWard = new Ward(name,capacity);
                 
                 //add to ward collection
-                wards.Add(w1);
+                wards.Add(newWard);
 
                 //update ward header
                 tblkWardHeader.Text = $"Ward List ({Ward.NumberOfWards})";
@@ -143,21 +143,49 @@ namespace CA1_Hospital_App
         //add new patient
         private void btnAddPatient_Click(object sender, RoutedEventArgs e)
         {
-            //create selected ward object reference
+            //create object reference for selected ward 
             var SelectedWard = lbxWards.SelectedItem as Ward;
 
             //check ward capacity first
             if (SelectedWard.patients.Count == SelectedWard.Capacity)
-                MessageBox.Show($"Ward capacity {SelectedWard.Capacity:F0} reached.Cannot add any more wards");
+                MessageBox.Show($"Ward capacity ({SelectedWard.Capacity:F0}) reached. Cannot add any more wards");
 
-            else if (tbPatientName.Text != null && )
+            else if (tbPatientName.Text != null && datePickerDOB.SelectedDate != null )
             {
                 //read in data
                 string name = tbPatientName.Text;
-                DateTime dob = datePickerDOB.SelectedDate;
+                DateTime dob = (DateTime)datePickerDOB.SelectedDate;
+
+                BloodType bloodType = BloodType.A; //default value to prevent compiler error
+
+                //radio buttons
+                if (rdBtnA.IsChecked.Equals(true))
+                {
+                    bloodType = BloodType.A;
+                }
+
+                else if (rdBtnB.IsChecked == true)
+                {
+                    bloodType = BloodType.B;
+                }
+
+                else if (rdBtnAB.IsChecked == true)
+                {
+                    bloodType = BloodType.AB;
+                }
+
+                else if (rdBtnO.IsChecked == true)
+                {
+                    bloodType = BloodType.O;
+                }
 
                 //create new object
-                Patient p1 = new Patient();
+                Patient p1 = new Patient
+                {
+                    Name = name,
+                    DOB = dob,
+                    BloodType = bloodType                     
+                };
 
                 //add patient to selected ward
                 SelectedWard.patients.Add(p1);
