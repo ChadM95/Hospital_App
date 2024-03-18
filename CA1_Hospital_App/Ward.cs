@@ -25,6 +25,15 @@ namespace CA1_Hospital_App
             //add to ward counter field
             NumberOfWards++;
         }
+
+        public Ward(string name)
+        {
+            Name = name;
+
+            //add to ward counter field
+            NumberOfWards++;
+        }
+
         public Ward(string name, double capacity)
         {
             Name = name;

@@ -20,6 +20,23 @@ namespace CA1_Hospital_App
             
         }
 
+        public Patient(string name)
+        {
+            Name = name;
+        }
+
+        public Patient(string name, DateTime dob)
+        {
+            Name = name;
+            DOB = dob;
+        }
+
+        public Patient(string name, BloodType bloodType)
+        {
+            Name = name;
+            BloodType = bloodType;
+        }
+
         public Patient(string name, DateTime dob, BloodType bloodType)
         {
             Name = name;

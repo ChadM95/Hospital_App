@@ -126,26 +126,35 @@ namespace CA1_Hospital_App
         //add new ward
         private void btnAddWard_Click(object sender, RoutedEventArgs e)
         {
-            if (tbWardName.Text != null && sliderCapacity.Value > 0)
+            //check if anything is entered in name textbox
+            if (tbWardName.Text.Length > 0)
             {
-                //read in name and capacity
-                string name = tbWardName.Text;
-                double capacity = sliderCapacity.Value;
-                
-                //create new ward object
-                Ward newWard = new Ward(name,capacity);
-                
-                //add to ward collection
-                wards.Add(newWard);
 
-                //update ward header
-                tblkWardHeader.Text = $"Ward List ({Ward.NumberOfWards})";
+                if (tbWardName.Text != null && sliderCapacity.Value > 0)
+                {
+                    //read in name and capacity
+                    string name = tbWardName.Text;
+                    double capacity = sliderCapacity.Value;
+
+                    //create new ward object
+                    Ward newWard = new Ward(name, capacity);
+
+                    //add to ward collection
+                    wards.Add(newWard);
+
+                    //update ward header
+                    tblkWardHeader.Text = $"Ward List ({Ward.NumberOfWards})";
+                }
             }
         }
 
         //add new patient
         private void btnAddPatient_Click(object sender, RoutedEventArgs e)
         {
+            //check if anything is entered in name textbox
+            if (tbPatientName.Text.Length > 0)
+            { 
+
             //create object reference for selected ward 
             var SelectedWard = lbxWards.SelectedItem as Ward;
 
@@ -199,6 +208,8 @@ namespace CA1_Hospital_App
 
                 //add patient to selected ward
                 SelectedWard.patients.Add(p1);
+                
+                }
             }
         }
 
